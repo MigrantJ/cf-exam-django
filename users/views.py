@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from users.models import User
 
@@ -13,3 +14,9 @@ def detail(request, user_id):
     except User.DoesNotExist:
         raise Http404("User does not exist")
     return render(request, 'users/detail.html', {'user': user})
+
+def edit(request, user_id):
+    p = get_object_or_404(User, pk=user_id)
+    p.first_name = request.POST['first_name']
+    p.save()
+    return HttpResponseRedirect(reverse('index'))
