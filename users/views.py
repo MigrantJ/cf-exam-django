@@ -28,17 +28,19 @@ def add(request):
 
 def edit(request, user_id):
     if user_id != '0':
-        p = get_object_or_404(User, pk=user_id)
+        u = get_object_or_404(User, pk=user_id)
     else:
         # user id of 0 means add a new user
-        p = User()
+        u = User()
 
-    p.first_name = request.POST['first_name']
-    p.last_name = request.POST['last_name']
-    p.email = request.POST['email']
+    u.first_name = request.POST['first_name']
+    u.last_name = request.POST['last_name']
+    u.email = request.POST['email']
 
-    p.save()
+    u.save()
     return HttpResponseRedirect(reverse('index'))
 
-def delete(request):
+def delete(request, user_id):
+    u = get_object_or_404(User, pk=user_id)
+    u.delete()
     return HttpResponseRedirect(reverse('index'))
