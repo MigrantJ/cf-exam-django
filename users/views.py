@@ -1,20 +1,20 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from users.models import User
+
 
 def index(request):
     context = {'user_list': User.objects.order_by('first_name')}
     return render(request, 'users/index.html', context)
 
+
 def detail(request, user_id=None):
-    try:
-        user = User.objects.get(pk=user_id)
-    except User.DoesNotExist:
-        raise Http404("User does not exist")
+    user = get_object_or_404(User, pk=user_id)
 
     return render(request, 'users/detail.html', {'user': user})
+
 
 def add(request):
     user = {
@@ -25,6 +25,7 @@ def add(request):
     }
 
     return render(request, 'users/detail.html', {'user': user})
+
 
 def edit(request, user_id):
     if user_id != '0':
@@ -39,6 +40,7 @@ def edit(request, user_id):
 
     u.save()
     return HttpResponseRedirect(reverse('index'))
+
 
 def delete(request, user_id):
     u = get_object_or_404(User, pk=user_id)
