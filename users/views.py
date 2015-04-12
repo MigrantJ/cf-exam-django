@@ -6,8 +6,9 @@ from users.models import User
 
 
 def index(request):
-    context = {'user_list': User.objects.order_by('first_name')}
-    return render(request, 'users/index.html', context)
+    context = {'user_list': User.objects.order_by('first_name'),
+               'sub_template': 'users/index.html'}
+    return render(request, 'users/base.html', context)
 
 
 def detail(request, user_id=None):

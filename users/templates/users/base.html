@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>Test Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/bootstrap.min.css' %}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Users</h1>
+    {% if sub_template %}
+        {% include sub_template %}
+    {% else %}
+        <p>Cannot display sub_template, none found!</p>
+    {% endif %}
+</div>
+</body>
+</html>
