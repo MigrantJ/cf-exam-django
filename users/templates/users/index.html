@@ -1,13 +1,25 @@
+<div class="col-sm-12">
+    <a class="btn btn-default btn-lg" href="{% url 'add' %}">Add User</a>
+    <br /><br />
+</div>
+<div class="col-sm-8">
 {% if user_list %}
-    <ul>
     {% for user in user_list %}
-        <li>
-            <a href="{% url 'detail' user.id %}">{{ user }}</a>
-            <a href="{% url 'delete' user.id %}">Delete User</a>
-        </li>
+        <div class="panel panel-default col-sm-6">
+            <a href="{% url 'detail' user.id %}">
+                <h2>
+                    {{ user }}
+                    <br />
+                    <small>This is where the bio summary will go.</small>
+                </h2>
+            </a>
+
+            <a class="btn btn-default" href="{% url 'detail' user.id %}">Edit</a>
+            <a class="btn btn-danger" href="{% url 'delete' user.id %}">Delete</a>
+            <br /><br />
+        </div>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No users found!</p>
 {% endif %}
-<a href="{% url 'add' %}">Add User</a>
+</div>
