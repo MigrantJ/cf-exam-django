@@ -12,9 +12,10 @@ def index(request):
 
 
 def detail(request, user_id=None):
-    user = get_object_or_404(User, pk=user_id)
+    context = {'user': get_object_or_404(User, pk=user_id),
+               'sub_template': 'users/detail.html'}
 
-    return render(request, 'users/detail.html', {'user': user})
+    return render(request, 'users/base.html', context)
 
 
 def add(request):
@@ -24,8 +25,12 @@ def add(request):
         'last_name': '',
         'email': ''
     }
+    context = {
+        'user': user,
+        'sub_template': 'users/detail.html'
+    }
 
-    return render(request, 'users/detail.html', {'user': user})
+    return render(request, 'users/base.html', context)
 
 
 def edit(request, user_id):
