@@ -8,9 +8,9 @@
         <div class="panel panel-default col-sm-6">
             <a href="{% url 'detail' user.id %}">
                 <h2>
-                    {{ user }}
+                    {{ user.name_abbrev }}
                     <br />
-                    <small>{{ user.bio }}</small>
+                    <small>{{ user.bio_abbrev }}</small>
                 </h2>
             </a>
 
