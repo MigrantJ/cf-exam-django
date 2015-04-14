@@ -1,4 +1,4 @@
-{% if user.id %}<h3 class="col-sm-offset-2 col-sm-10">Edit {{ user }}</h3>{% else %}<h3>Add New User</h3>{% endif %}
+<h3 class="">{% if user.id %}Edit {{ user }}{% else %}Add New User{% endif %}</h3>
 
 {% if error_message %}<h3 class="danger"><strong>{{ error_message }}</strong></p></h3>{% endif %}
 
