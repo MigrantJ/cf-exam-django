@@ -43,6 +43,7 @@ def edit(request, user_id):
     u.first_name = request.POST['first_name']
     u.last_name = request.POST['last_name']
     u.email = request.POST['email']
+    u.bio = request.POST['bio']
 
     u.save()
     return HttpResponseRedirect(reverse('index'))
