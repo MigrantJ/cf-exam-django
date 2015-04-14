@@ -1,8 +1,8 @@
-<div class="col-sm-12">
-    <a class="btn btn-default btn-lg" href="{% url 'add' %}">Add User</a>
+<div>
+    <a class="btn btn-default btn-lg" href="{% url 'add' %}">Add New User</a>
     <br /><br />
 </div>
-<div class="col-sm-8">
+<div>
 {% if user_list %}
     {% for user in user_list %}
         <div class="panel panel-default col-sm-6">
